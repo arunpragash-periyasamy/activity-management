@@ -13,7 +13,7 @@ const menuItems = [
         icon: <TbDashboard  className="text-xl"/>,
     },
     {
-        label: "Task Management",
+        label: "Tasks",
         icon: <FaTasks className="text-xl"/>,
         children: [
             { label: "Add Task", href: "/task/add-task" },

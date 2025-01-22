@@ -19,7 +19,7 @@ const AppLayout = (props:{children: any, darkMode: boolean, setDarkMode:any}) =>
 
         {/* Main Content */}
         <main className="flex-grow p-4 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-          <div className="h-full border-dashed border-2 border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center overflow-auto">
+          <div className="max-h-full border-dashed border-2 border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center overflow-hidden">
             {children}
           </div>
         </main>

@@ -1,5 +1,4 @@
 'use client';
-import type { Metadata } from "next";
 import "./globals.css";
 import AppLayout from "./AppLayout/AppLayout";
 import { useState } from "react";
@@ -11,11 +10,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   return (
     <html lang="en">
-      <body>
-        <AppLayout children={children} darkMode={darkMode} setDarkMode={setDarkMode}/>
+      <body className={darkMode ? "dark" : ""}>
+        <AppLayout darkMode={darkMode} setDarkMode={setDarkMode}>
+          {children}
+        </AppLayout>
         </body>
     </html>
   );

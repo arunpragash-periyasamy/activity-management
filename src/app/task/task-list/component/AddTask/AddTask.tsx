@@ -1,9 +1,6 @@
 import { Fragment, useState } from "react";
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from "@headlessui/react";
 import { FaTimes } from "react-icons/fa";
-import { Editor } from "@tinymce/tinymce-react";
-
-const PUBLIC_URL = "http://localhost:3000";
 
 interface AddTaskModalProps {
   isOpen: boolean;
@@ -17,9 +14,6 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose }) => {
   const [comments, setComments] = useState("");
   const [description, setDescription] = useState("");
 
-  const handleEditorChange = (content: string) => {
-    setDescription(content);
-  };
 
   const handleSubmit = () => {
     const taskData = {
@@ -50,7 +44,7 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose }) => {
 
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="flex items-center justify-center min-h-full p-6">
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0 scale-95"
@@ -75,7 +69,9 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose }) => {
 
                 <div className="space-y-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Title</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Title
+                    </label>
                     <input
                       type="text"
                       value={title}
@@ -86,31 +82,21 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose }) => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Description</label>
-                    <Editor
-                      tinymceScriptSrc={`${PUBLIC_URL}/tinymce/tinymce.min.js`}
-                      initialValue="<p>Start editing...</p>"
-                      init={{
-                        height: 250,
-                        menubar: false,
-                        plugins: [
-                          "advlist autolink lists link image charmap preview anchor",
-                          "searchreplace visualblocks code fullscreen",
-                          "insertdatetime media table paste code wordcount",
-                        ],
-                        toolbar:
-                          "undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
-                        content_style:
-                          "body { font-family:Helvetica,Arial,sans-serif; font-size:14px; color: #333 }",
-                        skin_url: `${PUBLIC_URL}/tinymce/skins/ui/oxide-dark`,
-                      }}
-                      onEditorChange={handleEditorChange}
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Description
+                    </label>
+                    <textarea
+                      className="w-full mt-2 px-4 py-2 border rounded-lg dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                      value={description}
+                      onChange={(e) => setDescription(e.target.value)}
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Priority</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Priority
+                      </label>
                       <select
                         value={priority}
                         onChange={(e) => setPriority(e.target.value)}
@@ -124,7 +110,9 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose }) => {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Date</label>
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                        Date
+                      </label>
                       <input
                         type="date"
                         value={date}
@@ -135,7 +123,9 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose }) => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Comments</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                      Comments
+                    </label>
                     <textarea
                       value={comments}
                       onChange={(e) => setComments(e.target.value)}
@@ -163,7 +153,7 @@ const AddTaskModal: React.FC<AddTaskModalProps> = ({ isOpen, onClose }) => {
                   </button>
                 </div>
               </DialogPanel>
-            </Transition.Child>
+            </TransitionChild>
           </div>
         </div>
       </Dialog>

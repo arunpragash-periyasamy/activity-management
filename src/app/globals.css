@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* globals.css */
+::-webkit-scrollbar {
+  width: 8px; /* Set width for the vertical scrollbar */
+  height: 8px; /* Set height for the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #fdfdfd94; /* Track background */
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0f4a5c; /* Thumb color */
+  border-radius: 4px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #09e4d1; /* Hover color */
+}
